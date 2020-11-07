@@ -20,9 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-    // User::factory()->count(3)->create();
-    // Book::factory()->count(5)->create();
-    // return "Databse populated";
 });
 
 Route::get('/users/{user_id}/books/{book_id}', [UserController::class, 'buyBook']);
