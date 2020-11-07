@@ -20,6 +20,22 @@ class UsersTest extends TestCase
         $this->get('/home')->assertStatus(200);
     }
 
+    public function test_user_entry(){
+        User::factory()->create();
+        User::factory()->create();
+        User::factory()->create();
+        User::factory()->create();
+        User::factory()->create();
+        $this->assertCount(5, User::all());
+    }
+
+    public function test_book_entry(){
+        Book::factory()->create();
+        Book::factory()->create();
+        Book::factory()->create();
+        $this->assertCount(3, Book::all());
+    }
+
     public function test_books_are_added_successfully(){
         $user = User::factory()->create();
         $this->actingAs($user);
