@@ -48,4 +48,19 @@ class UsersTest extends TestCase
         $this->get('/')->assertStatus(200);
     }
 
+    public function test_removing_book(){        
+        $user = User::factory()->create();
+        $this->actingAs($user);
+        $books = Book::factory()->count(5)->create();
+        foreach($books as $book){
+            $user->books()->save($book);
+        }
+        $this->assertCount(5, $user->books()->get());
+        foreach($books as $book){
+            $this->get('/users/'.$user->id.'/delete-book/'.$book->id)->assertRedirect('users/'.($user->id));
+            
+        }
+        $this->assertCount(0, $user->books()->get());
+    }
+
 }
