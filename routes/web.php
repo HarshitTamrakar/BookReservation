@@ -29,3 +29,17 @@ Route::get('/users/{id}', [UserController::class, 'getBooks']);
 Auth::routes();
 
 Route::get('/home', [UserController::class, 'index'])->name('home');
+
+Route::get('/generate-user-{number}', function($number){
+    User::factory()->count($number)->create();
+    return "Generated $number users";
+    sleep(4);
+    return redirect('/');
+});
+
+Route::get('/generate-book-{number}', function($number){
+    Book::factory()->count($number)->create();
+    return "Generated $number books";
+    sleep(4);
+    return redirect('/');
+});
