@@ -44,4 +44,8 @@ class UsersTest extends TestCase
         $this->assertCount(1, $user->books()->get());
     }
 
+    public function test_basic(){
+        $this->get('/')->assertStatus(200);
+    }
+
 }
