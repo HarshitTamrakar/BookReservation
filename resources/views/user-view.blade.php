@@ -11,9 +11,16 @@
   $total += $book->price;
   ?>
   <div class="border border-black rounded my-2 p-4">
-    <h2 class="h2">{{$index}}) {{$book->title}}</h2>
-    <h4 class="h4">{{$book->author}}</h4>
-    <h3 class="h3">Price is : ${{$book->price}}.00</h3>
+    <div class="row">
+      <div class="col-10">
+        <h2 class="h2">{{$index}}) {{$book->title}}</h2>
+        <h4 class="h4">{{$book->author}}</h4>
+        <h3 class="h3">Price is : ${{$book->price}}.00</h3>
+      </div>
+      <div class="col-2 p-2">
+        <a href="{{$book->removePath()}}" class="btn btn-lg btn-danger">Remove</a>
+      </div>
+    </div>
   </div>
   @endforeach
   <div class="border border-dark p-3 my-2 bg-dark text-light text-center">

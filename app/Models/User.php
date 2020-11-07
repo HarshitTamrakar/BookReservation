@@ -45,4 +45,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Book::class);
     }
 
+    public function deleteBook($book_id){
+        $this->books()->find($book_id)->delete();
+        return;
+    }
 }

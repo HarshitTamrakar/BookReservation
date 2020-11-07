@@ -37,6 +37,11 @@ Route::get('/generate-user-{number}', function($number){
     return redirect('/');
 });
 
+Route::get('users/{user_id}/delete-book/{book_id}', function($user_id, $book_id){
+    Auth::user()->deleteBook($book_id);
+    return redirect('users/'.$user_id);
+});
+
 Route::get('/generate-book-{number}', function($number){
     Book::factory()->count($number)->create();
     return "Generated $number books";
